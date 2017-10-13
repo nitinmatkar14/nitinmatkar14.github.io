@@ -1,0 +1,38 @@
+<div class="text-center"><h4>USER LIST</h4></div>
+<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+        <th style="width: 10%">
+            <mfDefaultSorter by="name">ID</mfDefaultSorter>
+        </th>
+        <th style="width: 30%">
+            <mfDefaultSorter by="email">NAME</mfDefaultSorter>
+        </th>
+        <th style="width: 30%">
+            <mfDefaultSorter by="age">USERNAME</mfDefaultSorter>
+        </th>
+        <th style="width: 20%">
+            <mfDefaultSorter by="city">EMAIL</mfDefaultSorter>
+        </th> 
+        <th style="width: 20%">
+            ACTION
+        </th>          
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let todo of mf.data">
+        <td style="width: 10%">{{todo.id}}</td>
+        <td style="width: 30%">{{todo.name}}</td>
+        <td style="width: 30%">{{todo.username}}</td>
+        <td style="width: 20%">{{todo.email}}</td>
+        <td style="width: 20%"><button class="btn btn-primary" (click)="viewUser(todo.id,todo.name)" [routerLink] = "['/view']">View Todos</button></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>

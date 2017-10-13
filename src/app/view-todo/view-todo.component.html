@@ -1,0 +1,43 @@
+<button type="submit" class="btn btn-danger" [routerLink] = "['/']">BACK</button>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2"><h6>ID</h6></div>
+      <div class="col-sm-8">{{uid}}</div>
+    </div>
+  <div class="row">
+    <div class="col-sm-2"><h6>NAME</h6></div>
+    <div class="col-sm-8">{{uname}}</div>
+  </div>
+</div>
+</div>
+<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="10">
+    <thead>
+    <tr>
+        <th style="width: 10%">
+            <mfDefaultSorter by="name">ID</mfDefaultSorter>
+        </th>
+        <th style="width: 30%">
+            <mfDefaultSorter by="email">TITLE</mfDefaultSorter>
+        </th>
+        <th style="width: 30%">
+            <mfDefaultSorter by="age">COMPLETED</mfDefaultSorter>
+        </th>
+                
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let todo of mf.data">
+        <td style="width: 10%">{{todo.id}}</td>
+        <td style="width: 30%">{{todo.title}}</td>
+        <td style="width: 30%">{{todo.completed}} </td>       
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>
